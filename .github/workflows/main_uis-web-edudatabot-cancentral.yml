@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: https://uis2resgistry.azurecr.io/
-        username: ${{ secrets.AzureAppService_ContainerUsername_0dd7e28f3b3341aea967874f3ef8fda2 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_1d5b8fc2f72d456f90361e927c32398e }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_0f10233d188b4513b65411fd84ad5b9a }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_227effeb0a9e47159d7f9e05339d2dc1 }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: uis2resgistry.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_0dd7e28f3b3341aea967874f3ef8fda2 }}/un-vis-app:${{ github.sha }}
+        tags: uis2resgistry.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_0f10233d188b4513b65411fd84ad5b9a }}/uis-vis-app:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'uis-web-edudatabot-cancentral'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_676b77dd76814d5aae4dfcd4649da550 }}
-        images: 'uis2resgistry.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_0dd7e28f3b3341aea967874f3ef8fda2 }}/un-vis-app:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_948f20ae1a4844f295275f076e580587 }}
+        images: 'uis2resgistry.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_0f10233d188b4513b65411fd84ad5b9a }}/uis-vis-app:${{ github.sha }}'
